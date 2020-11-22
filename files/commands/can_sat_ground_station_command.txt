@@ -1,0 +1,21 @@
+!!!house_keeping_data_commands
+get_current_temp gct
+get_previous_temp gpt
+get_all_temp gal 
+get_current_gps_position gcg_1
+get_previous_gps_position gpp_1
+get_all_gps_position gap_1
+get_current_gyroscope_position gcg_2
+get_previous_gyroscope_position gpg_2
+get_all_gyroscope_position gag_2
+get_current_humidity gch
+get_previous_humidity gph
+get_all_humidity gah
+get_current_altitude gca
+get_previous_altitude gpa
+get_all_altitude gaa
+!!!mission_data_commands
+take_snap ts
+get_recent_snap grs
+get_previous_recent_snap gprs
+get_all_snap gas
