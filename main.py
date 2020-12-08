@@ -95,9 +95,9 @@ class Window(Frame):
 
         setting=Menu(menu)
         setting.add_command(label='Add mission command',command=TopLevels.add_mission_command)
-        setting.add_command(label='Remove mission command')
-        setting.add_command(label='Add HKD command')
-        setting.add_command(label='Remove HKD command')
+        setting.add_command(label='Remove mission command',command=TopLevels.remove_mission_command)
+        setting.add_command(label='Add HKD command',command=TopLevels.add_HDK_command)
+        setting.add_command(label='Remove HKD command',command=TopLevels.remove_HDK_command)
         setting.add_command(label='View all commands')
         
         data=Menu(menu)
@@ -115,6 +115,7 @@ class TopLevels:
         add_new_mission_command = Toplevel()
         add_new_mission_command.title("Add new mission command")
         add_new_mission_command.geometry("310x265+700+180")
+        add_new_mission_command.resizable(0,0) #disabling the maximize button
         Label(add_new_mission_command, text="Please enter details for new command").pack()
         Label(add_new_mission_command, text="").pack()
 
@@ -136,6 +137,93 @@ class TopLevels:
         command_initials_entry.pack()
         Label(add_new_mission_command, text="").pack()
         Button(add_new_mission_command, text="Add", width=10, height=1).pack()        
+
+    def remove_mission_command():
+        global remove_mission_command
+        remove_mission_command = Toplevel()
+        remove_mission_command.title("Remove mission command")
+        remove_mission_command.geometry("310x265+700+180")
+        remove_mission_command.resizable(0,0) #disabling the maximize button
+        Label(remove_mission_command, text="Please enter details for command to remove").pack()
+        Label(remove_mission_command, text="").pack()
+
+        global command_name
+        global command_initials
+
+        command_name = StringVar()
+        command_initials = StringVar()
+
+        global command_name_entry
+        global command_initials_entry
+
+        Label(remove_mission_command, text="Command to Remove").pack()
+        command_name_entry = Entry(remove_mission_command)
+        command_name_entry.pack()
+        Label(remove_mission_command, text="").pack()
+        Label(remove_mission_command, text="Command initials").pack()
+        command_initials_entry = Entry(remove_mission_command)
+        command_initials_entry.pack()
+        Label(remove_mission_command, text="").pack()
+        Button(remove_mission_command, text="Remove", width=10, height=1).pack() 
+        
+
+        
+    def add_HDK_command():
+        global add_new_HKD_command
+        add_new_HKD_command = Toplevel()
+        add_new_HKD_command.title("Add new HDK command")
+        add_new_HKD_command.geometry("310x265+700+180")
+        add_new_HKD_command.resizable(0,0) #disabling the maximize button
+        Label(add_new_HKD_command, text="Please enter details for new command").pack()
+        Label(add_new_HKD_command, text="").pack()
+
+        global command_name
+        global command_initials
+
+        command_name = StringVar()
+        command_initials = StringVar()
+
+        global command_name_entry
+        global command_initials_entry
+
+        Label(add_new_HKD_command, text="New command to add").pack()
+        command_name_entry = Entry(add_new_HKD_command)
+        command_name_entry.pack()
+        Label(add_new_HKD_command, text="").pack()
+        Label(add_new_HKD_command, text="Command initials").pack()
+        command_initials_entry = Entry(add_new_HKD_command,)
+        command_initials_entry.pack()
+        Label(add_new_HKD_command, text="").pack()
+        Button(add_new_HKD_command, text="Add", width=10, height=1).pack()        
+
+    def remove_HDK_command():
+        global remove_HDK_command
+        remove_HDK_command = Toplevel()
+        remove_HDK_command.title("Remove HDK command")
+        remove_HDK_command.geometry("310x265+700+180")
+        remove_HDK_command.resizable(0,0) #disabling the maximize button
+        Label(remove_HDK_command, text="Please enter details for command to remove").pack()
+        Label(remove_HDK_command, text="").pack()
+
+        global command_name
+        global command_initials
+
+        command_name = StringVar()
+        command_initials = StringVar()
+
+        global command_name_entry
+        global command_initials_entry
+
+        Label(remove_HDK_command, text="Command to Remove").pack()
+        command_name_entry = Entry(remove_HDK_command)
+        command_name_entry.pack()
+        Label(remove_HDK_command, text="").pack()
+        Label(remove_HDK_command, text="Command initials").pack()
+        command_initials_entry = Entry(remove_HDK_command)
+        command_initials_entry.pack()
+        Label(remove_HDK_command, text="").pack()
+        Button(remove_HDK_command, text="Remove", width=10, height=1).pack()
+        
         
 main_account_screen()
 
