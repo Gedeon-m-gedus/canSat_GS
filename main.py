@@ -43,18 +43,6 @@ def main_account_screen():
 
     menu_of_myapp = Window(main_screen)
     main_screen.mainloop()
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 
     
@@ -101,7 +89,7 @@ class Window(Frame):
         setting.add_command(label='View all commands')
         
         data=Menu(menu)
-        data.add_command(label='View HD data')
+        data.add_command(label='View HK data')
         data.add_command(label='View Mission data  ')
         data.add_command(label='Eport data')
         
@@ -166,12 +154,11 @@ class TopLevels:
         Label(remove_mission_command, text="").pack()
         Button(remove_mission_command, text="Remove", width=10, height=1).pack() 
         
-
         
     def add_HDK_command():
         global add_new_HKD_command
         add_new_HKD_command = Toplevel()
-        add_new_HKD_command.title("Add new HDK command")
+        add_new_HKD_command.title("Add new HKD command")
         add_new_HKD_command.geometry("310x265+700+180")
         add_new_HKD_command.resizable(0,0) #disabling the maximize button
         Label(add_new_HKD_command, text="Please enter details for new command").pack()
@@ -199,7 +186,7 @@ class TopLevels:
     def remove_HDK_command():
         global remove_HDK_command
         remove_HDK_command = Toplevel()
-        remove_HDK_command.title("Remove HDK command")
+        remove_HDK_command.title("Remove HKD command")
         remove_HDK_command.geometry("310x265+700+180")
         remove_HDK_command.resizable(0,0) #disabling the maximize button
         Label(remove_HDK_command, text="Please enter details for command to remove").pack()
