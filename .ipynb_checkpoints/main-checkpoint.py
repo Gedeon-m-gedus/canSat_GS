@@ -2,7 +2,19 @@ import commands as cmd # our methods for commands handling
 
 from tkinter import * # tkinter GUI library
 import os # OS library
+import subprocess, platform
 from PIL import Image#, ImageTk
+from tkinter import filedialog
+
+# try:
+#     import os
+#     import tkinter as tk
+#     import tkinter.ttk as ttk
+#     from tkinter import filedialog
+# except ImportError:
+#     import Tkinter as tk
+#     import ttk
+#     import tkFileDialog as filedialog
 
 def getCommand(event=''):
     enteredCommand = entryCommand.get()
@@ -33,12 +45,12 @@ def main_account_screen():
     app_tittle.grid(row=0,column=0)
 
     entryCommand = Entry(main_screen,font = "Helvetica 20 bold")
-    entryCommand.place(x = 0, y = 450, width=600, height=50)
+    entryCommand.place(x = 0, y = 450, width=700, height=50)
     
     entryCommand.bind('<Return>', getCommand)## Binding enter key to the entry 
     
-    enterButton = Button(main_screen,text="Enter", width=9, height=2, command = getCommand)# adding the enter button
-    enterButton.place(x=600, y=450)
+#     enterButton = Button(main_screen,text="Enter", width=9, height=2, command = getCommand)# adding the enter button
+#     enterButton.place(x=600, y=450)
 
 
     menu_of_myapp = Window(main_screen)
@@ -72,13 +84,12 @@ class Window(Frame):
         #these that follows are for file
         file=Menu(menu)
         file.add_command(label='New')
-        file.add_command(label='Open')
+        file.add_command(label='Open',command = helperMethods.openFiles)
         file.add_command(label='Recents')
         file.add_command(label='Examples          ')
         #file.add_command(label='Capture screen       ',command=control_functions.screenshoot)
         file.add_separator()
-        file.add_command(label='Quit')
-        #file.add_command(label='Quit',command=control_functions.quitfunction)
+        file.add_command(label='Quit',command=helperMethods.quitfunction)
 
 
         setting=Menu(menu)
@@ -91,11 +102,45 @@ class Window(Frame):
         data=Menu(menu)
         data.add_command(label='View HK data')
         data.add_command(label='View Mission data  ')
-        data.add_command(label='Eport data')
+        data.add_command(label='Export data')
+        
+        hlp=Menu(menu)
+        hlp.add_command(label='About CanSat')
+        hlp.add_command(label='CanSat GS user guide')
+        hlp.add_command(label='Report an issue')
         
         menu.add_cascade(label='File',menu=file)
         menu.add_cascade(label='Setting',menu=setting)
         menu.add_cascade(label='Data',menu=data)
+        menu.add_cascade(label='Help',menu=hlp)
+
+
+        
+class helperMethods:
+    def quitfunction():
+        exit()
+    def openFiles():
+        rep = filedialog.askopenfilenames(
+        parent=main_screen,
+        initialdir='/',
+        initialfile='tmp',
+        filetypes=[
+            ("PNG", "*.png"),
+            ("JPEG", "*.jpg"),
+            ("All files", "*")])
+
+        try:
+            filepath=rep[1]#'/home/aimsp/Downloads/tiger_car.png'
+            if platform.system() == 'Darwin':       # macOS
+                subprocess.call(('open', filepath))
+            elif platform.system() == 'Windows':    # Windows
+                os.startfile(filepath)
+            else:                                   # linux variants
+                subprocess.call(('xdg-open', filepath))
+        except IndexError:
+            print("No file selected")
+
+        
 
 class TopLevels:        
     def add_mission_command():
