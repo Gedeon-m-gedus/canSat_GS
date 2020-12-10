@@ -6,20 +6,19 @@ import subprocess, platform
 from PIL import Image#, ImageTk
 from tkinter import filedialog
 
-# try:
-#     import os
-#     import tkinter as tk
-#     import tkinter.ttk as ttk
-#     from tkinter import filedialog
-# except ImportError:
-#     import Tkinter as tk
-#     import ttk
-#     import tkFileDialog as filedialog
 
 def getCommand(event=''):
     enteredCommand = entryCommand.get()
+    for i in range(len(enteredCommand)):
+        entryCommand.delete(0)
     return cmd.run_command(enteredCommand)
 
+def canSatDoc():
+    pth = os.getcwd()
+    fileP = pth+'/files/appDocs/manual_CanSat_textbook_eng_v5.pdf'
+    helperMethods.openF(fileP)
+    
+    
 def loadImage():
     canvas_width = 300
     canvas_height =300
@@ -105,7 +104,7 @@ class Window(Frame):
         data.add_command(label='Export data')
         
         hlp=Menu(menu)
-        hlp.add_command(label='About CanSat')
+        hlp.add_command(label='About CanSat',command=canSatDoc)
         hlp.add_command(label='CanSat GS user guide')
         hlp.add_command(label='Report an issue')
         
@@ -119,6 +118,15 @@ class Window(Frame):
 class helperMethods:
     def quitfunction():
         exit()
+    def openF(path):
+        filepath=path#'/home/aimsp/Downloads/tiger_car.png'
+        if platform.system() == 'Darwin':       # macOS
+            subprocess.call(('open', filepath))
+        elif platform.system() == 'Windows':    # Windows
+            os.startfile(filepath)
+        else:                                   # linux variants
+            subprocess.call(('xdg-open', filepath))
+            
     def openFiles():
         rep = filedialog.askopenfilenames(
         parent=main_screen,
