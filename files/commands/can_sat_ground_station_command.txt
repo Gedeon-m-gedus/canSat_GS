@@ -14,8 +14,12 @@ get_all_humidity gah
 get_current_altitude gca
 get_previous_altitude gpa
 get_all_altitude gaa
+help hlp
 !!!mission_data_commands
 take_snap ts
 get_recent_snap grs
 get_previous_recent_snap gprs
 get_all_snap gas
+!!!new_commands
+view_hk_data vhkd
+view_mission_data vmd

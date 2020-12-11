@@ -38,5 +38,3 @@ def run_command(cmd):
         print('Valid command', cm)
     else:
         print('Invalid command',cm)
-# import os
-# print(os.getcwd())

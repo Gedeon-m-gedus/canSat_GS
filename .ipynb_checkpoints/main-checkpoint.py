@@ -17,7 +17,32 @@ def canSatDoc():
     pth = os.getcwd()
     fileP = pth+'/files/appDocs/manual_CanSat_textbook_eng_v5.pdf'
     helperMethods.openF(fileP)
+
+def viewAllCmd():
+    pth = os.getcwd()
+    fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
+    helperMethods.openF(fileP)  
     
+def addNewCommand():
+    cmd_ful = command_name_entry.get()
+    cmd_inti = command_initials_entry.get()
+    cmd = cmd_ful + ' '
+    cmd += cmd_inti
+    cmd += '\n'
+#     cmd = 'view_hk_data vhkd'
+    print(cmd)
+    addCommand(cmd)
+    
+    
+    
+def addCommand(cmd):    
+    # Append-adds at last 
+    pth = os.getcwd()
+    fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
+    file1 = open(fileP, "a")  # append mode 
+    file1.write(cmd) 
+    file1.close() 
+    print('DOne---------')
     
 def loadImage():
     canvas_width = 300
@@ -96,7 +121,7 @@ class Window(Frame):
         setting.add_command(label='Remove mission command',command=TopLevels.remove_mission_command)
         setting.add_command(label='Add HKD command',command=TopLevels.add_HDK_command)
         setting.add_command(label='Remove HKD command',command=TopLevels.remove_HDK_command)
-        setting.add_command(label='View all commands')
+        setting.add_command(label='View all commands',command=viewAllCmd)
         
         data=Menu(menu)
         data.add_command(label='View HK data')
@@ -177,7 +202,7 @@ class TopLevels:
         command_initials_entry = Entry(add_new_mission_command,)
         command_initials_entry.pack()
         Label(add_new_mission_command, text="").pack()
-        Button(add_new_mission_command, text="Add", width=10, height=1).pack()        
+        Button(add_new_mission_command, text="Add", width=10, height=1,command = addNewCommand).pack()        
 
     def remove_mission_command():
         global remove_mission_command
