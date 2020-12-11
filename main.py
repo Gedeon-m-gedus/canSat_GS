@@ -36,6 +36,8 @@ def addNewCommand():
 
 def addCommand(cmd):    
     # Append-adds at last 
+    add_new_mission_command.destroy()
+    if len(cmd)<2:return
     pth = os.getcwd()
     fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
     file1 = open(fileP, "a")  # append mode 
@@ -52,6 +54,8 @@ def deleteCommand():
     deleteLine(cmd)
     
 def deleteLine(cmd):
+    remove_mission_command.destroy()
+    if len(cmd)<2:return
     pth = os.getcwd()
     fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
     
@@ -141,8 +145,8 @@ class Window(Frame):
         setting=Menu(menu)
         setting.add_command(label='Add mission command',command=TopLevels.add_mission_command)
         setting.add_command(label='Remove mission command',command=TopLevels.remove_mission_command)
-        setting.add_command(label='Add HKD command',command=TopLevels.add_HDK_command)
-        setting.add_command(label='Remove HKD command',command=TopLevels.remove_HDK_command)
+        setting.add_command(label='Add HKD command',command=TopLevels.add_mission_command)
+        setting.add_command(label='Remove HKD command',command=TopLevels.remove_mission_command)
         setting.add_command(label='View all commands',command=viewAllCmd)
         
         data=Menu(menu)
