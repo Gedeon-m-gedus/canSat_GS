@@ -15,9 +15,15 @@ def getCommand(event=''):
 
 def canSatDoc():
     pth = os.getcwd()
-    fileP = pth+'/files/appDocs/manual_CanSat_textbook_eng_v5.pdf'
+    fileP = pth+'/Help/About.html'
+    helperMethods.openF(fileP)
+    
+def userGuide():
+    pth = os.getcwd()
+    fileP = pth+'/Help/how_to_add_remove_command.html'
     helperMethods.openF(fileP)
 
+    
 def viewAllCmd():
     pth = os.getcwd()
     fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
@@ -156,7 +162,7 @@ class Window(Frame):
         
         hlp=Menu(menu)
         hlp.add_command(label='About CanSat',command=canSatDoc)
-        hlp.add_command(label='CanSat GS user guide')
+        hlp.add_command(label='CanSat GS user guide',command=userGuide)
         hlp.add_command(label='Report an issue')
         
         menu.add_cascade(label='File',menu=file)
