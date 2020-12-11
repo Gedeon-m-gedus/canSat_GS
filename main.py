@@ -30,11 +30,10 @@ def addNewCommand():
     cmd += cmd_inti
     cmd += '\n'
 #     cmd = 'view_hk_data vhkd'
-    print(cmd)
+#     print(cmd)
     addCommand(cmd)
-    
-    
-    
+
+
 def addCommand(cmd):    
     # Append-adds at last 
     pth = os.getcwd()
@@ -43,6 +42,29 @@ def addCommand(cmd):
     file1.write(cmd) 
     file1.close() 
     print('DOne---------')
+    
+def deleteCommand():
+    cmd_ful = command_name_entry.get()
+    cmd_inti = command_initials_entry.get()
+    cmd = cmd_ful + ' '
+    cmd += cmd_inti
+    #cmd += '\n' 
+    deleteLine(cmd)
+    
+def deleteLine(cmd):
+    pth = os.getcwd()
+    fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
+    
+    a_file = open(fileP, "r")
+    lines = a_file.readlines()
+    a_file.close()
+
+    new_file = open(fileP, "w")
+    for line in lines:
+        if line.strip("\n") != cmd:
+            new_file.write(line)
+    new_file.close() 
+    print('Removed')
     
 def loadImage():
     canvas_width = 300
@@ -230,7 +252,7 @@ class TopLevels:
         command_initials_entry = Entry(remove_mission_command)
         command_initials_entry.pack()
         Label(remove_mission_command, text="").pack()
-        Button(remove_mission_command, text="Remove", width=10, height=1).pack() 
+        Button(remove_mission_command, text="Remove", width=10, height=1,command=deleteCommand).pack() 
         
         
     def add_HDK_command():
@@ -259,7 +281,7 @@ class TopLevels:
         command_initials_entry = Entry(add_new_HKD_command,)
         command_initials_entry.pack()
         Label(add_new_HKD_command, text="").pack()
-        Button(add_new_HKD_command, text="Add", width=10, height=1).pack()        
+        Button(add_new_HKD_command, text="Add", width=10, height=1,command = addNewCommand).pack()        
 
     def remove_HDK_command():
         global remove_HDK_command
@@ -287,7 +309,7 @@ class TopLevels:
         command_initials_entry = Entry(remove_HDK_command)
         command_initials_entry.pack()
         Label(remove_HDK_command, text="").pack()
-        Button(remove_HDK_command, text="Remove", width=10, height=1).pack()
+        Button(remove_HDK_command, text="Remove", width=10, height=1,command=deleteCommand).pack()
         
         
 main_account_screen()
