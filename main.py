@@ -1,5 +1,5 @@
 import commands as cmd # our methods for commands handling
-#import data as DT
+import data as DT
 
 from tkinter import * # tkinter GUI library
 import os # OS library
@@ -40,6 +40,10 @@ def addNewCommand():
 #     print(cmd)
     addCommand(cmd)
 
+    
+def exportHKData():
+    if DT.exportHKD() :
+        messagebox.showinfo( "Hello user", "Your data has been successfully exported")
 
 def addCommand(cmd):    
     # Append-adds at last 
@@ -157,9 +161,9 @@ class Window(Frame):
         setting.add_command(label='View all commands',command=viewAllCmd)
         
         data=Menu(menu)
-        data.add_command(label='View HK data')
+        data.add_command(label='View HK data',command=DT.view_hdk)
         data.add_command(label='View Mission data  ')
-        data.add_command(label='Export data')
+        data.add_command(label='Export data',command=exportHKData)
         
         hlp=Menu(menu)
         hlp.add_command(label='About CanSat',command=canSatDoc)
