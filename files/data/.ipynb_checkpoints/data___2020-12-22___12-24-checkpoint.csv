@@ -1,0 +1,17 @@
+name,group,year,value
+temp,Celcius,0,27.0
+hum,Percent_%,0,62.0
+press,Bar,0,847.0
+alt,Meters,0,1478.0
+temp,Celcius,1,25.2
+hum,Percent_%,1,68.07
+press,Bar,1,853.0
+alt,Meters,1,1462.0
+temp,Celcius,2,29.6
+hum,Percent_%,2,69.4
+press,Bar,2,867.0
+alt,Meters,2,1438.0
+temp,Celcius,3,27.0
+hum,Percent_%,3,65.0
+press,Bar,3,842.0
+alt,Meters,3,1458.0

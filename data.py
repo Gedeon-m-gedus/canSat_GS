@@ -31,6 +31,7 @@ def draw_barchart(year):
         ax.text(value-dx, i,     name,           size=14, weight=600, ha='right', va='bottom')
         ax.text(value-dx, i-.25, group_lk[name], size=10, color='#444444', ha='right', va='baseline')
         ax.text(value+dx, i,     f'{value:,.0f}',  size=14, ha='left',  va='center')
+        
     # ... polished styles
     ax.text(1, 0.4, year, transform=ax.transAxes, color='#777777', size=46, ha='right', weight=800)
     ax.text(0, 1.06, 'Magnitude', transform=ax.transAxes, size=12, color='#777777')

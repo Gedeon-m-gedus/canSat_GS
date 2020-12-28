@@ -159,6 +159,7 @@ class Window(Frame):
         setting.add_command(label='Add HKD command',command=TopLevels.add_mission_command)
         setting.add_command(label='Remove HKD command',command=TopLevels.remove_mission_command)
         setting.add_command(label='View all commands',command=viewAllCmd)
+        setting.add_command(label='Add Satellite',command=TopLevels.add_CanSat_fct)
         
         data=Menu(menu)
         data.add_command(label='View HK data',command=DT.view_hdk)
@@ -212,7 +213,31 @@ class helperMethods:
 
         
 
-class TopLevels:        
+class TopLevels:   
+    
+    
+    def add_CanSat_fct():
+        global add_canSat
+        add_canSat = Toplevel()
+        add_canSat.title("Add new CanSat")
+        add_canSat.geometry("310x265+700+180")
+        add_canSat.resizable(0,0) #disabling the maximize button
+        Label(add_canSat, text="Please paste your read API").pack()
+        Label(add_canSat, text="").pack()
+
+        global read_API
+
+        read_API = StringVar()
+
+        global read_API_entry
+
+        Label(add_canSat, text="Paste your read API").pack()
+        read_API_entry = Entry(add_canSat)
+        read_API_entry.pack()
+        Button(add_canSat, text="Add", width=10, height=1).pack() 
+        
+        
+        
     def add_mission_command():
         global add_new_mission_command
         add_new_mission_command = Toplevel()
