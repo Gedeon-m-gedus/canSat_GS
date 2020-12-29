@@ -114,6 +114,42 @@ def main_account_screen():
 #     enterButton.place(x=600, y=450)
 
 
+
+    def data_label(label,name,value,unit):
+        def count():
+            dis =  name + ' ' + str(value)+' '+unit
+            label.config(text=dis)
+            label.after(1000, count)
+        count()
+
+
+    temp_label = Label(main_screen, fg="green",font=("Arial", 20))
+    temp_label.place(relx = 0.1,  
+                rely = 0.3, 
+                anchor = 'w')
+    data_label(temp_label,'Temperature',20,'C')
+    
+    hum_label = Label(main_screen, fg="green",font=("Arial", 20))
+    hum_label.place(relx = 0.1,  
+                rely = 0.6, 
+                anchor = 'w')
+    data_label(hum_label,'Humidity',62,'%')
+    
+    
+    pres_label = Label(main_screen, fg="green",font=("Arial", 20))
+    pres_label.place(relx = 0.1,  
+                rely = 0.4, 
+                anchor = 'w')
+    data_label(pres_label,'Pressure',853,'bar')
+    
+    
+    alt_label = Label(main_screen, fg="green",font=("Arial", 20))
+    alt_label.place(relx = 0.1,  
+                rely = 0.5, 
+                anchor = 'w')
+    data_label(alt_label,'Pressure',1461,'m')
+
+
     menu_of_myapp = Window(main_screen)
     main_screen.mainloop()
     
