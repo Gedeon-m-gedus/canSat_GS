@@ -102,7 +102,7 @@ def main_account_screen():
 
     top_frame=Frame(main_screen,width = 700,height=50,bg="gray64",relief=SUNKEN)
     top_frame.pack(side=TOP)
-    app_tittle = Label(top_frame,font=('arial',35,'bold'),text="CanSat GROUND STATION",fg="darkblue",bd=10)
+    app_tittle = Label(top_frame,font=('arial',35,'bold'),text="CanSat-Rwa GROUND STATION",fg="darkblue",bd=10)
     app_tittle.grid(row=0,column=0)
 
     entryCommand = Entry(main_screen,font = "Helvetica 20 bold")
