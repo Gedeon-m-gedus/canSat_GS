@@ -42,7 +42,7 @@ def draw_barchart(year):
     ax.margins(0, 0.01)
     ax.grid(which='major', axis='x', linestyle='-')
     ax.set_axisbelow(True)
-    ax.text(0.5, 1.12, 'CanSat Data Visiulization',
+    ax.text(0.5, 1.12, 'CanSat Data Visualization',
             transform=ax.transAxes, size=24, weight=600, ha='center')
     plt.box(False)
     
