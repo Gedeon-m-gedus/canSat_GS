@@ -5,14 +5,16 @@ from tkinter import * # tkinter GUI library
 import os # OS library
 import subprocess, platform
 from PIL import Image#, ImageTk
-from tkinter import filedialog
+from tkinter import filedialog   # Tkinter module to help in getting the value from user
 
-
+# the get command function(method)
 def getCommand(event=''):
     enteredCommand = entryCommand.get()
     for i in range(len(enteredCommand)):
         entryCommand.delete(0)
     return cmd.run_command(enteredCommand)
+
+# Help related function: canSatDoc(), userGuide()
 
 def canSatDoc():
     pth = os.getcwd()
@@ -24,7 +26,7 @@ def userGuide():
     fileP = pth+'/Help/how_to_add_remove_command.html'
     helperMethods.openF(fileP)
 
-    
+# command related functions(add command, view command,remove command)
 def viewAllCmd():
     pth = os.getcwd()
     fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
@@ -91,6 +93,7 @@ def loadImage():
     img = PhotoImage(file="im.png")
     canvas.create_image(20,20, anchor=NW, image=img)
 
+#the main account screen
 def main_account_screen():
     global main_screen
     global entryCommand
