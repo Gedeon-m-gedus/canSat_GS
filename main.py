@@ -150,7 +150,7 @@ def main_account_screen():
     alt_label.place(relx = 0.1,  
                 rely = 0.5, 
                 anchor = 'w')
-    data_label(alt_label,'Pressure',1461,'m')
+    data_label(alt_label,'Altitude',1461,'m')
 
 
     menu_of_myapp = Window(main_screen)
