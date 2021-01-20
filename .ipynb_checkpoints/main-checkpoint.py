@@ -1,18 +1,21 @@
 import commands as cmd # our methods for commands handling
 import data as DT
+#import get_data as GT
 
 from tkinter import * # tkinter GUI library
 import os # OS library
 import subprocess, platform
 from PIL import Image#, ImageTk
-from tkinter import filedialog
+from tkinter import filedialog   # Tkinter module to help in getting the value from user
 
-
+# the get command function(method)
 def getCommand(event=''):
     enteredCommand = entryCommand.get()
     for i in range(len(enteredCommand)):
         entryCommand.delete(0)
     return cmd.run_command(enteredCommand)
+
+# Help related function: canSatDoc(), userGuide()
 
 def canSatDoc():
     pth = os.getcwd()
@@ -24,7 +27,7 @@ def userGuide():
     fileP = pth+'/Help/how_to_add_remove_command.html'
     helperMethods.openF(fileP)
 
-    
+# command related functions(add command, view command,remove command)
 def viewAllCmd():
     pth = os.getcwd()
     fileP = pth+'/files/commands/can_sat_ground_station_command.txt'
@@ -91,6 +94,7 @@ def loadImage():
     img = PhotoImage(file="im.png")
     canvas.create_image(20,20, anchor=NW, image=img)
 
+#the main account screen
 def main_account_screen():
     global main_screen
     global entryCommand
@@ -102,7 +106,7 @@ def main_account_screen():
 
     top_frame=Frame(main_screen,width = 700,height=50,bg="gray64",relief=SUNKEN)
     top_frame.pack(side=TOP)
-    app_tittle = Label(top_frame,font=('arial',35,'bold'),text="CanSat GROUND STATION",fg="darkblue",bd=10)
+    app_tittle = Label(top_frame,font=('arial',35,'bold'),text="CanSat-Rwa GROUND STATION",fg="darkblue",bd=10)
     app_tittle.grid(row=0,column=0)
 
     entryCommand = Entry(main_screen,font = "Helvetica 20 bold")
@@ -147,7 +151,7 @@ def main_account_screen():
     alt_label.place(relx = 0.1,  
                 rely = 0.5, 
                 anchor = 'w')
-    data_label(alt_label,'Pressure',1461,'m')
+    data_label(alt_label,'Altitude',1461,'m')
 
 
     menu_of_myapp = Window(main_screen)
@@ -195,11 +199,11 @@ class Window(Frame):
         setting.add_command(label='Add HKD command',command=TopLevels.add_mission_command)
         setting.add_command(label='Remove HKD command',command=TopLevels.remove_mission_command)
         setting.add_command(label='View all commands',command=viewAllCmd)
-        setting.add_command(label='Add Satellite',command=TopLevels.add_CanSat_fct)
+        #setting.add_command(label='Add Satellite',command=TopLevels.add_CanSat_fct)
         
         data=Menu(menu)
         data.add_command(label='View HK data',command=DT.view_hdk)
-        data.add_command(label='View Mission data  ')
+        data.add_command(label='View Mission data  ', command=DT.get_plot_data)
         data.add_command(label='Export data',command=exportHKData)
         
         hlp=Menu(menu)

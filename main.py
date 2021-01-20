@@ -1,5 +1,6 @@
 import commands as cmd # our methods for commands handling
 import data as DT
+#import get_data as GT
 
 from tkinter import * # tkinter GUI library
 import os # OS library
@@ -198,11 +199,11 @@ class Window(Frame):
         setting.add_command(label='Add HKD command',command=TopLevels.add_mission_command)
         setting.add_command(label='Remove HKD command',command=TopLevels.remove_mission_command)
         setting.add_command(label='View all commands',command=viewAllCmd)
-        setting.add_command(label='Add Satellite',command=TopLevels.add_CanSat_fct)
+        #setting.add_command(label='Add Satellite',command=TopLevels.add_CanSat_fct)
         
         data=Menu(menu)
         data.add_command(label='View HK data',command=DT.view_hdk)
-        data.add_command(label='View Mission data  ')
+        data.add_command(label='View Mission data  ', command=DT.get_plot_data)
         data.add_command(label='Export data',command=exportHKData)
         
         hlp=Menu(menu)
