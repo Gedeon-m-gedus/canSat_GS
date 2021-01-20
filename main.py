@@ -184,10 +184,10 @@ class Window(Frame):
 
         #these that follows are for file
         file=Menu(menu)
-        file.add_command(label='New')
+#         file.add_command(label='New')
         file.add_command(label='Open',command = helperMethods.openFiles)
-        file.add_command(label='Recents')
-        file.add_command(label='Examples          ')
+        file.add_command(label='Recents',command = helperMethods.openFiles)
+        file.add_command(label='Examples          ',command=canSatDoc)
         #file.add_command(label='Capture screen       ',command=control_functions.screenshoot)
         file.add_separator()
         file.add_command(label='Quit',command=helperMethods.quitfunction)
@@ -204,7 +204,8 @@ class Window(Frame):
         data=Menu(menu)
         data.add_command(label='View HK data',command=DT.view_hdk)
         data.add_command(label='View Mission data  ', command=DT.get_plot_data)
-        data.add_command(label='Export data',command=exportHKData)
+        data.add_command(label='Export data',command=DT.export_data)
+        #data.add_command(label='Export data',command=exportHKData)
         
         hlp=Menu(menu)
         hlp.add_command(label='About CanSat',command=canSatDoc)
