@@ -4,3 +4,8 @@ CanSat as it is shortly written stands for a can-sized satellite which is a type
 ![alt text](files/appDocs/cansat_kit.png)
 #### Project objectives
 The main objective of our project is to design a ground station for the CanSat. The ground station (GS) is made of a GUI which interacts with the CanSat and provides a way of communication between CanSat and GS.
+#### Userguide
+- CLone the repository
+- Create a new python Virtual Environment
+- Install requirements.txt
+- Run the main.py script
